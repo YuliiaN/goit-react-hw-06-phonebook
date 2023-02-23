@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Section from './Section/Section';
 import Form from './Form/Form';
 import ContactsList from './ContactsList/ContactsList';
@@ -8,10 +7,6 @@ import { useSelector } from 'react-redux';
 export const App = () => {
   const contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter.filter);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   const selectedContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
