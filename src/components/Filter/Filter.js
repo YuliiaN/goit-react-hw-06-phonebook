@@ -1,9 +1,13 @@
 import { FilterTitleStyled, FilteredInputStyled } from './Filter.styled';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filter/filterSlice';
 
-const Filter = ({ title, filterContacts }) => {
-  const getValue = event => {
-    return filterContacts(event.target.value);
+const Filter = ({ title }) => {
+  const dispatch = useDispatch();
+
+  const getValue = e => {
+    dispatch(setFilter(e.target.value));
   };
 
   return (
@@ -22,7 +26,6 @@ const Filter = ({ title, filterContacts }) => {
 
 Filter.propTypes = {
   title: PropTypes.string.isRequired,
-  filterContacts: PropTypes.func.isRequired,
 };
 
 export default Filter;
